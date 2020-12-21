@@ -4,7 +4,8 @@ while [ ! -f /home/learner/notebooks/.install -a  "$1" != "-f" ]; do
     read -p "This process downloads the latest version of the notebooks (deleting the current ones). Continue? [y/N] " yn
     case $yn in
         [Yy]* ) break;;
-        * ) exit 1;;
+        [Nn]* ) exit 0;;
+        * ) exit 0;;
     esac
 done
 
