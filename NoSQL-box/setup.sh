@@ -1,5 +1,13 @@
 #!/bin/bash
 
+while [ ! -f /home/learner/notebooks/.install -a  "$1" != "-f" ]; do
+    read -p "This process downloads the latest version of the notebooks (deleting the current ones). Continue? [y/N] " yn
+    case $yn in
+        [Yy]* ) break;;
+        * ) exit 1;;
+    esac
+done
+
 rm -rf /home/learner/notebooks/Taller_BBDD
 git clone https://github.com/dvillaj/Taller_BBDD.git /home/learner/notebooks/Taller_BBDD
 
@@ -20,4 +28,6 @@ if [ -f /home/learner/notebooks/.install ]; then
     docker pull mongo:4.2.5
     docker pull neo4j:3.5.11
     docker pull huggingface/mongoku:1.3.0
+
+    rm -f /home/learner/notebooks/.installv
 fi
